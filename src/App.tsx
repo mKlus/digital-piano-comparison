@@ -15,7 +15,7 @@ import {
 import { PIANO_MODELS, ACTION_DEEP_DIVES, DISPERSION_ARCHITECTURES, HEAD_TO_HEAD_SCORES } from './data/pianoData';
 
 export function App() {
-  const [filterMode, setFilterMode] = useState<'all' | 'shortlist' | 'kawai' | 'roland' | 'yamaha' | 'casio'>('all');
+  const [filterMode, setFilterMode] = useState<'all' | 'shortlist' | 'grand' | 'kawai' | 'roland' | 'yamaha' | 'casio'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [copied, setCopied] = useState(false);
 
@@ -29,6 +29,7 @@ export function App() {
     return PIANO_MODELS.filter((piano) => {
       // Filter tab
       if (filterMode === 'shortlist' && piano.badge !== 'Top Shortlist') return false;
+      if (filterMode === 'grand' && !['kawai-dg30', 'roland-gp-6', 'roland-gp-9'].includes(piano.id)) return false;
       if (filterMode === 'kawai' && piano.brand !== 'Kawai') return false;
       if (filterMode === 'roland' && piano.brand !== 'Roland') return false;
       if (filterMode === 'yamaha' && piano.brand !== 'Yamaha') return false;
@@ -187,6 +188,16 @@ export function App() {
               </div>
             </div>
           </div>
+
+          {/* Baby Grand Format Comparison Note */}
+          <div className="mt-5 p-4 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-700">
+            <strong className="text-slate-900 block mb-1">
+              What about Baby Grand Alternatives? Kawai DG30 ($5,595) vs. Roland GP-6 ($7,979):
+            </strong>
+            <p className="leading-relaxed">
+              If your priority is a baby-grand furniture statement in the living room, the <strong>Kawai DG30 ($5,495 – $5,695 AUD)</strong> is <strong>~$2,400 to $3,800 cheaper</strong> than the Roland GP-6 ($7,979 – $9,399 AUD). However, be aware of the engineering trade-off: the DG30 houses Kawai’s mid-tier plastic folded action (RHIII, ~19.5cm pivot) and 40W speakers, whereas the upright <strong>Kawai CA901 costs $600 LESS ($4,995 AUD)</strong> while delivering full-length wooden seesaw keys (24cm grand pivot) and a real 135W vibrating spruce soundboard.
+            </p>
+          </div>
         </section>
 
         {/* SECTION 1: CORE DEMANDS */}
@@ -221,12 +232,12 @@ export function App() {
           </div>
         </section>
 
-        {/* SECTION 2: THE 10 PIANOS MASTER TABLE */}
+        {/* SECTION 2: THE 11 PIANOS MASTER TABLE */}
         <section className="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
             <div>
               <h2 className="text-lg font-bold text-slate-900 border-l-4 border-l-slate-900 pl-3 uppercase tracking-wide">
-                2. Master 10-Piano Technical & Market Comparison (Australia, Sept 2026)
+                2. Master 11-Piano Technical & Market Comparison (Australia, Sept 2026)
               </h2>
               <p className="text-xs text-slate-500 mt-1 pl-4">
                 Verified street pricing across authorized Australian dealers (The Pianoforte, Better Music, Gospel Pianos, House of Pianos, Piano City, Belfield Music).
@@ -257,7 +268,7 @@ export function App() {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
-              All 10 Models
+              All 11 Models
             </button>
             <button
               onClick={() => setFilterMode('shortlist')}
@@ -270,6 +281,16 @@ export function App() {
               ⭐ Top Shortlist (3)
             </button>
             <button
+              onClick={() => setFilterMode('grand')}
+              className={`px-3 py-1 text-xs rounded-md font-medium transition-colors ${
+                filterMode === 'grand'
+                  ? 'bg-purple-800 text-white'
+                  : 'bg-purple-50 text-purple-800 hover:bg-purple-100 border border-purple-200'
+              }`}
+            >
+              Baby Grands (3)
+            </button>
+            <button
               onClick={() => setFilterMode('kawai')}
               className={`px-3 py-1 text-xs rounded-md font-medium transition-colors ${
                 filterMode === 'kawai'
@@ -277,7 +298,7 @@ export function App() {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
-              Kawai
+              Kawai (3)
             </button>
             <button
               onClick={() => setFilterMode('roland')}
@@ -451,6 +472,15 @@ export function App() {
                   <td className="p-2.5 font-semibold text-blue-900">Seesaw Lever (Center balance pin)</td>
                   <td className="p-2.5 font-mono font-bold">~24.0 cm</td>
                   <td className="p-2.5">100% Solid Spruce Wood</td>
+                  <td className="p-2.5">Rubber bumper notch</td>
+                  <td className="p-2.5 font-semibold text-emerald-800">Yes (Graded)</td>
+                </tr>
+                <tr>
+                  <td className="p-2.5 font-bold text-slate-900">Responsive Hammer III (RHIII)</td>
+                  <td className="p-2.5">Kawai (DG30 / CN Series)</td>
+                  <td className="p-2.5 text-slate-600">Folded Hinge (Standard compact pivot)</td>
+                  <td className="p-2.5 font-mono font-bold text-slate-600">~19.5 cm</td>
+                  <td className="p-2.5">Plastic (Ivory Touch)</td>
                   <td className="p-2.5">Rubber bumper notch</td>
                   <td className="p-2.5 font-semibold text-emerald-800">Yes (Graded)</td>
                 </tr>

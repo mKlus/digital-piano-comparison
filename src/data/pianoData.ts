@@ -2,7 +2,7 @@ export interface PianoModel {
   id: string;
   name: string;
   brand: 'Kawai' | 'Roland' | 'Yamaha' | 'Casio';
-  badge: 'Top Shortlist' | 'Alternative' | 'Ultra Flagship' | 'Competitor' | 'Hybrid Action';
+  badge: 'Top Shortlist' | 'Alternative' | 'Ultra Flagship' | 'Competitor' | 'Hybrid Action' | 'Baby Grand';
   badgeColor: string;
   format: string;
   priceSatinAUD: number;
@@ -10,14 +10,14 @@ export interface PianoModel {
   priceDisplay: string;
   rrpDisplay: string;
   actionName: string;
-  actionType: 'Seesaw Wooden' | 'Extended High-Pivot Folded' | 'Moving Acoustic Hammer';
+  actionType: 'Seesaw Wooden' | 'Extended High-Pivot Folded' | 'Moving Acoustic Hammer' | 'Plastic Folded Action';
   pivotLengthCm: number;
   keyMaterials: string;
   escapement: string;
   counterweights: string;
   hasHaptics: boolean;
   soundEngine: string;
-  engineType: 'Multi-Channel Sampling' | 'Pure Physical Modeling' | 'Binaural Sampling + VRM' | 'European Triple Sampling';
+  engineType: 'Multi-Channel Sampling' | 'Pure Physical Modeling' | 'Binaural Sampling + VRM' | 'European Triple Sampling' | 'Stereo Sampling (PHI)';
   polyphony: string;
   speakerSystem: string;
   speakerWatts: number;
@@ -118,6 +118,48 @@ export const PIANO_MODELS: PianoModel[] = [
       tonalColoring: 9.4,
       visualPresence: 8.2,
       valueForMoney: 9.4
+    }
+  },
+  {
+    id: 'kawai-dg30',
+    name: 'Kawai DG30',
+    brand: 'Kawai',
+    badge: 'Baby Grand',
+    badgeColor: 'bg-purple-700 text-white',
+    format: 'Compact Digital Grand (Depth 87 cm)',
+    priceSatinAUD: 5595,
+    pricePolishedAUD: 5595,
+    priceDisplay: '$5,495 – $5,695 (Polished Ebony)',
+    rrpDisplay: '$6,595',
+    actionName: 'Responsive Hammer III (RHIII)',
+    actionType: 'Plastic Folded Action',
+    pivotLengthCm: 19.5,
+    keyMaterials: 'Plastic key bodies, Ivory Touch surfaces',
+    escapement: 'Rubber let-off simulation',
+    counterweights: 'Yes (Grade-weighted counterweights)',
+    hasHaptics: false,
+    soundEngine: 'Progressive Harmonic Imaging (PHI, 88-key sampling)',
+    engineType: 'Stereo Sampling (PHI)',
+    polyphony: '256 Notes',
+    speakerSystem: '4-Speaker Onkyo System (2x 13cm woofers + 2x 10cm top speakers)',
+    speakerWatts: 40,
+    strengths: [
+      'Striking compact baby grand cabinet (87 cm depth) with dual-prop opening lid at ~$5,500 AUD.',
+      'Significantly lower investment (~$2,400 to $3,800 less) than Roland GP-6 ($7,979–$9,399).',
+      'Solid RHIII action with triple-sensor detection, counterweights, and Bluetooth MIDI & Audio.'
+    ],
+    tradeOffs: [
+      'Uses mid-tier plastic folded action (RHIII, ~19.5cm pivot) rather than Kawai\'s flagship wooden seesaw action (GFIII, 24cm) found in the lower-priced CA901 ($4,995).',
+      'Lower speaker output (40W total) and older PHI sound engine without multi-channel resonance modeling.'
+    ],
+    warranty: '5-Year Manufacturer Australian Warranty',
+    scores: {
+      actionAuthenticity: 7.8,
+      dynamicRepetition: 8.8,
+      acousticProjection: 8.2,
+      tonalColoring: 8.5,
+      visualPresence: 9.8,
+      valueForMoney: 8.0
     }
   },
   {
